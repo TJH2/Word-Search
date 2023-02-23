@@ -8,13 +8,13 @@ import java.io.*;
 public class Assignment1WordSearch {
 
    // VARIABLES:
-   public static int aLength = 20;
+   private static int aLength = 20;
    private static String[][] wordSearch = new String[aLength][aLength]; // word search array
    private static String[][] wordSearchKey = new String[aLength][aLength]; // answer key array
    private static ArrayList<String> words = new ArrayList<String>(); // array to collect words
    private static Random random = new Random(); // randome # generator
    private static String currentWord = ""; // words to collect
-   public static String reversed = ""; // string for reverse of current word
+   private static String reversed = ""; // string for reverse of current word
    private static int V = 0; // starting array position verticle for previous string
    private static int H = 0; // starting array position horizontal for previous string
    private static int tempV = 0; // starting array position verticle for next string
