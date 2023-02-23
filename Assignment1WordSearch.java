@@ -1,3 +1,7 @@
+//Programmer: T. Jake Holmes II
+//Assignment: Word Search
+//Extra Credit: word cross (see sample words)
+
 import java.util.*;
 import java.io.*;
 
