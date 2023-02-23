@@ -144,8 +144,6 @@ public class Assignment1WordSearch {
       menu();
    } // end of generator
     
-    
-    
  // Method to handle the first word from user
    public static void wordOne() {
       V = aLength / 2;
@@ -188,10 +186,7 @@ public class Assignment1WordSearch {
             wordSearchKey[V + j][H] = character.toUpperCase(); // adds the word all caps
          }
       } // end of if false
-     
    } // end of wordTwo
-   
-   
    
    public static void wordThree() {
       placement = false;
@@ -236,7 +231,6 @@ public class Assignment1WordSearch {
       } // end if
    } // end of wordThree()
    
-   
    //Method for fourth word
    public static void wordFour() {
    
@@ -278,33 +272,58 @@ public class Assignment1WordSearch {
             wordSearch[V - i][H] = character; // adds word to wordSearch lower case
             wordSearchKey[V - i][H] = character.toUpperCase(); // adds the word all caps
          }
-      
       }
    }
    
    public static void wordFive() {
+      placement = false;
+      for(int x = 0; x < words.get(words.size() - 2).length(); x++) {
+         for(int y = 0; y < currentWord.length(); y++) { // goes through second word
+            if(words.get(words.size() - 2).charAt(x) == currentWord.charAt(y)) {
+               if(placement == false) {
+                  placement = true;
+                  tempV = V + y;
+                  tempH = H - x;
+                     
+                  for(int i = 0; i < currentWord.length(); i++) {
+                     String character = "" + currentWord.charAt(i);
+                     if(wordSearch[tempV + i][tempH - i] != null && !wordSearch[tempV + i][tempH - i].equals(character)) {
+                        placement = false;
+                     }
+                  }
+                     
+                  if(placement == true) {
+                     V = V + y;
+                     H = H - x;
+                     for(int i = 0; i < currentWord.length(); i++) { // places on left side
+                        String character = "" + currentWord.charAt(i);
+                        wordSearch[V + i][H - i] = character; // adds word to wordSearch lower case
+                        wordSearchKey[V + i][H - i] = character.toUpperCase(); // adds the word all caps
+                     }
+                  }             
+               } // end of if
+            }
+         } // end of y
+      } // end of x 
+
+      if(placement == false) {
+         V = 0;
+         H = 19;
+         while(wordSearch[V][H] == null) {
+            V++;
+            H--;
+         }
+         
+         V -= currentWord.length() + 1;
+         H += currentWord.length() + 1;
    
-      V = 0;
-      H = 19;
-   
-      while(wordSearch[V][H] == null) {
-         V++;
-         H--;
-      }
-   
-      V -= currentWord.length() + 1;
-      H += currentWord.length() + 1;
-   
-   
-   
-      for(int i = 0; i < currentWord.length(); i++) { // places on left side
+         for(int i = 0; i < currentWord.length(); i++) { // places on left side
          String character = "" + currentWord.charAt(i);
          wordSearch[V + i][H - i] = character; // adds word to wordSearch lower case
          wordSearchKey[V + i][H - i] = character.toUpperCase(); // adds the word all caps
-      }
-    
+         } // end of for
+      } // end of if
    }
-
 
     //Method to print word search
    public static void printWS() {
@@ -328,7 +347,6 @@ public class Assignment1WordSearch {
       }
       menu();
    } // end print word search
-
 
     //Method to print answer key
    public static void printAK() {
