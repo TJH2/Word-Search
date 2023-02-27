@@ -287,8 +287,13 @@ public class Assignment1WordSearch {
                      
                   for(int i = 0; i < currentWord.length(); i++) {
                      String character = "" + currentWord.charAt(i);
+                     if((tempV + i) < 0 || (tempV + i) > 19 || (tempH - i) < 0 || (tempH - i) > 19) {
+                        placement = false;
+                     }
+                     else {
                      if(wordSearch[tempV + i][tempH - i] != null && !wordSearch[tempV + i][tempH - i].equals(character)) {
                         placement = false;
+                     }
                      }
                   }
                      
@@ -297,8 +302,10 @@ public class Assignment1WordSearch {
                      H = H - x;
                      for(int i = 0; i < currentWord.length(); i++) { // places on left side
                         String character = "" + currentWord.charAt(i);
-                        wordSearch[V + i][H - i] = character; // adds word to wordSearch lower case
-                        wordSearchKey[V + i][H - i] = character.toUpperCase(); // adds the word all caps
+                        //wordSearch[V + i][H - i] = character; // adds word to wordSearch lower case
+                        //wordSearchKey[V + i][H - i] = character.toUpperCase(); // adds the word all caps
+                        System.out.println("V + i = " + (V + i));
+                        System.out.println("H - i = " + (H - i));
                      }
                   }             
                } // end of if
