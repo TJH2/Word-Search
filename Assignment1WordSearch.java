@@ -199,8 +199,15 @@ public class Assignment1WordSearch {
                   tempH = H + y;
                   for(int i = 0; i < currentWord.length(); i++) {
                      String character = "" + currentWord.charAt(i);
-                     if(wordSearch[tempV][tempH - i] != null && !wordSearch[tempV][tempH - i].equals(character)) {
+
+                     if((tempV + i) < 0 || (tempV + i) > 19 || (tempH - i) < 0 || (tempH - i) > 19) {
                         placement = false;
+                     }
+                     else {
+
+                        if(wordSearch[tempV][tempH - i] != null && !wordSearch[tempV][tempH - i].equals(character)) {
+                        placement = false;
+                        }
                      }
                   }
                   if(placement) {
@@ -245,8 +252,15 @@ public class Assignment1WordSearch {
                      
                   for(int i = 0; i < currentWord.length(); i++) {
                      String character = "" + currentWord.charAt(i);
-                     if(wordSearch[tempV - i][tempH] != null && !wordSearch[tempV - i][tempH].equals(character)) {
+                     
+                     if((tempV + i) < 0 || (tempV + i) > 19 || (tempH - i) < 0 || (tempH - i) > 19) {
                         placement = false;
+                     }
+                     else {
+
+                        if(wordSearch[tempV - i][tempH] != null && !wordSearch[tempV - i][tempH].equals(character)) {
+                        placement = false;
+                        }
                      }
                   }
                      
